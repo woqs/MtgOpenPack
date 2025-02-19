@@ -2,20 +2,27 @@ import React, { useCallback, useContext, useState } from 'react';
 import { ScryfallApiRepository } from '../Infrastructure/ScryfallApiRepository';
 import SearchContext from '../Infrastructure/SearchContext';
 import { Card } from '../Domain/Card';
+import { FilteredSetCardsDictionnary, PackConstruction } from '../Domain/PackConstruction';
 
 function OpenAPack() {
   const {loadSetCards} = ScryfallApiRepository();
-  const [setCards, setSetCards] = useState<{[set: string]: Array<Card>}>({});
-  const {selectedSet} = useContext(SearchContext);
+  const {openPack, constructFilteredSetCards} = PackConstruction();
+  const [setCards, setSetCards] = useState<FilteredSetCardsDictionnary>({});
+  const {selectedSet, setBoosterCards} = useContext(SearchContext);
 
-  const openPack = useCallback(() => {
-    if (selectedSet && (setCards[selectedSet] === undefined || setCards[selectedSet].length === 0)) {
+  const openPackClick = useCallback(() => {
+    if (selectedSet && setCards[selectedSet] === undefined) {
       loadSetCards(selectedSet)
         .then(
-          (cards: Card[]) => setSetCards((prevState) => ({...prevState , [selectedSet]: cards}))
+          (cards: Card[]) => {
+            const filteredSetCards = constructFilteredSetCards(selectedSet, cards);
+            setSetCards((prevState) => ({...prevState , ...filteredSetCards}));
+            setBoosterCards(openPack(filteredSetCards[selectedSet]));
+          }
         );
+    } else {
+      selectedSet && setBoosterCards(openPack(setCards[selectedSet]));
     }
-    console.log(setCards);
   }, [loadSetCards, selectedSet, setCards])
 
   return (
@@ -23,7 +30,7 @@ function OpenAPack() {
       type="button"
       title="Open a pack"
       value="Open a pack"
-      onClick={openPack}
+      onClick={openPackClick}
     />
   );
 }

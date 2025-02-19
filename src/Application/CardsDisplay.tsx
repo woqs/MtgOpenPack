@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import SearchContext from '../Infrastructure/SearchContext';
+import { Card } from '../Domain/Card';
+import CardDisplay from './CardDisplay';
 
 function CardsDisplay() {
-  const {selectedSet} = useContext(SearchContext);
+  const {boosterCards} = useContext(SearchContext);
 
   return (
-    <div>{selectedSet}</div>
+    <div style={{ width: "80%", height: "80%", display: "flex", justifyContent: 'space-around', flexWrap: "wrap"}}>
+      {boosterCards.map((card: Card) => <CardDisplay card={card} />)}
+    </div>
   );
 }
 

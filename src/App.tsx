@@ -6,12 +6,12 @@ import SetList from './Application/SetList';
 function App() {
 
   return (
-    <div style={{ height: "100%", display: "flex", justifyContent: 'space-around' }}>
-      <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
-        <div style={{ display:"flex", justifyContent: "space-around", height: "50px" }}>
-          <OpenAPack />
-          <SetList />
-        </div>
+    <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", gap: "40px", paddingTop: "60px", width: "100%" }}>
+      <div style={{ display:"flex", justifyContent: "space-around", height: "50px", width: "100%"}}>
+        <OpenAPack />
+        <SetList />
+      </div>
+      <div style={{display: "flex", justifyContent: 'space-around', width: "100%", padding: "0% 10%"}}>
         <CardsDisplay />
       </div>
     </div>

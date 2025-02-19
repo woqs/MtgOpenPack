@@ -12,7 +12,7 @@ const getWhileNext = async (uri: string): Promise<Array<Card>> => {
   const call = axios.get<SetCardReturn>(uri).then((response) => response.data).catch((error => error))
   return call.then(async (response: SetCardReturn) => {
     return response.has_more && !!response.next_page ?
-      [...await getWhileNext(response.next_page), ...response.data] :
+      [...response.data, ...await getWhileNext(response.next_page)] :
       response.data
     ;
   }, () => []);
@@ -47,7 +47,7 @@ export const ScryfallApiRepository = () => ({
     ;
     return call.then(async (response: SetCardReturn) => {
       return response.has_more && !!response.next_page ?
-        [...await getWhileNext(response.next_page), ...response.data] :
+        [...response.data, ...await getWhileNext(response.next_page)] :
         response.data
       ;
     }, () => []);
