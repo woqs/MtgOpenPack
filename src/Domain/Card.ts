@@ -2,6 +2,12 @@ export type ImageUris = {
   image_uris?: {normal: string}
 }
 
+export type Currency =
+  | "eur"
+  | "usd"
+  | "usd_foil"
+;
+
 export type Card = {
   id: string;
   type_line: string;
@@ -10,6 +16,7 @@ export type Card = {
   rarity: Rarity;
   frame_effects?: string[];
   promo_types?: string[];
+  prices: {[currency in Currency]: string};
 } & ImageUris;
 
 export type Rarity = 

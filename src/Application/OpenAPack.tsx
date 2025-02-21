@@ -8,7 +8,7 @@ function OpenAPack() {
   const {loadSetCards} = ScryfallApiRepository();
   const {openPack, constructFilteredSetCards} = PackConstruction();
   const [setCards, setSetCards] = useState<FilteredSetCardsDictionnary>({});
-  const {selectedSet, setBoosterCards} = useContext(SearchContext);
+  const {selectedSet, setBoosterCards, boosterType} = useContext(SearchContext);
 
   const openPackClick = useCallback(() => {
     if (selectedSet && setCards[selectedSet] === undefined) {
@@ -17,13 +17,13 @@ function OpenAPack() {
           (cards: Card[]) => {
             const filteredSetCards = constructFilteredSetCards(selectedSet, cards);
             setSetCards((prevState) => ({...prevState , ...filteredSetCards}));
-            setBoosterCards(openPack(filteredSetCards[selectedSet]));
+            setBoosterCards(openPack(filteredSetCards[selectedSet], boosterType));
           }
         );
     } else {
-      selectedSet && setBoosterCards(openPack(setCards[selectedSet]));
+      selectedSet && setBoosterCards(openPack(setCards[selectedSet], boosterType));
     }
-  }, [loadSetCards, selectedSet, setCards])
+  }, [loadSetCards, selectedSet, setCards, boosterType])
 
   return (
     <input

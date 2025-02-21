@@ -7,7 +7,7 @@ function CardsDisplay() {
   const {boosterCards} = useContext(SearchContext);
 
   return (
-    <div style={{ width: "80%", height: "80%", display: "flex", justifyContent: 'space-around', flexWrap: "wrap"}}>
+    <div style={{ width: "80%", height: "80%", display: "flex", justifyContent: 'space-around', flexWrap: "wrap", marginBottom: "10%"}}>
       {boosterCards.map((card: Card) => <CardDisplay card={card} />)}
     </div>
   );
