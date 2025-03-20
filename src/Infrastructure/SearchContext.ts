@@ -9,6 +9,8 @@ type Props = {
   boosterCards: Card[];
   setBoosterType: (cards: BoosterType) => void;
   boosterType: BoosterType;
+  setDraftCards: (cards: Card[]) => void;
+  draftCards: Card[];
 };
 
 const SearchContext = createContext<Props>({
@@ -18,6 +20,8 @@ const SearchContext = createContext<Props>({
   boosterCards: [],
   setBoosterType: (type: BoosterType) => undefined,
   boosterType: "draft",
+  setDraftCards: (cards: Card[]) => undefined,
+  draftCards: [],
 });
 
 export default SearchContext;

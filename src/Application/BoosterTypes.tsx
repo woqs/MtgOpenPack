@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext } from 'react';
 import SearchContext from '../Infrastructure/SearchContext';
 import { BoosterType } from '../Domain/PackConstruction';
 

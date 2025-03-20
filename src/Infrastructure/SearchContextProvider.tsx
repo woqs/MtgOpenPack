@@ -9,6 +9,7 @@ const SearchContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedSet, setSelectedSet] = useState<string|null>();
   const [boosterCards, setBoosterCards] = useState<Card[]>([]);
   const [boosterType, setBoosterType] = useState<BoosterType>("draft");
+  const [draftCards, setDraftCards] = useState<Card[]>([]);
 
   const TokenValue = {
     setSelectedSet: (set?: string | null) => setSelectedSet(set),
@@ -17,6 +18,8 @@ const SearchContextProvider: React.FC<{ children: React.ReactNode }> = ({
     boosterCards: boosterCards,
     setBoosterType: (type: BoosterType) => setBoosterType(type),
     boosterType: boosterType,
+    setDraftCards: (cards: Card[]) => setDraftCards(cards),
+    draftCards: draftCards,
   };
 
   return (

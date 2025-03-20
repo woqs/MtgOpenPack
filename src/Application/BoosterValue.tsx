@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import SearchContext from '../Infrastructure/SearchContext';
 import { Card, Currency } from '../Domain/Card';
 

@@ -17,6 +17,8 @@ export type Card = {
   frame_effects?: string[];
   promo_types?: string[];
   prices: {[currency in Currency]: string};
+  cmc: number;
+  color_identity: Color[];
 } & ImageUris;
 
 export type Rarity = 
@@ -31,4 +33,12 @@ export type Border =
   | "borderless"
   | "yellow"
   | "white"
+;
+
+export type Color =
+  | "W"
+  | "U"
+  | "B"
+  | "R"
+  | "G"
 ;

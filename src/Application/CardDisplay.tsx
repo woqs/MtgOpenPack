@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, ImageUris } from '../Domain/Card';
 import "./CardDisplay.css"
 
-const CardDisplay: React.FC<{card: Card}> = ({card}) => {
+const CardDisplay: React.FC<{card: Card, isReduced?: boolean}> = ({card, isReduced = false}) => {
   const [imgUri, setImgUri] = useState<string|undefined>();
   const [cardFaces, setCardFaces] = useState<ImageUris[]>();
   useEffect(() => {
@@ -14,7 +14,7 @@ const CardDisplay: React.FC<{card: Card}> = ({card}) => {
   }, [card]);
 
   return (
-    <div className="card" >
+    <div className={isReduced ? "reducedCard" : "card"} >
       <img alt="This is cool" src={imgUri} />
       {cardFaces && cardFaces.length > 1 &&
         <div
