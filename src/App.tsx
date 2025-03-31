@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import OpenAPackPage from './Pages/OpenAPackPage';
-import DraftPage from './Pages/DraftPage';
+import SealedPage from './Pages/SealedPage';
 import NotFoundPage from './Pages/NotFoundPage';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<OpenAPackPage />} />
-          <Route path="draft" element={<DraftPage />} />
+          <Route path="draft" element={<SealedPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

@@ -1,16 +1,22 @@
 import React, { useContext } from 'react';
 import SearchContext from '../Infrastructure/SearchContext';
-
-import "./DraftDisplay.css"
 import DraftColumn from './DraftColumn';
 import { Card } from '../Domain/Card';
+
+import { styled } from 'styled-components';
+
+const RarityRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`
 
 function DraftDisplay() {
   const {draftCards} = useContext(SearchContext);
 
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-around', flexWrap: "wrap", marginBottom: "10%", overflow: "auto"}}>
-      <div className="rarityRow">
+      <RarityRow>
         <div style={{width: "75px"}}>
           R/M
         </div>
@@ -35,8 +41,8 @@ function DraftDisplay() {
         <DraftColumn title="None" cards={draftCards} filter={(card: Card) =>
           (card.rarity === "rare" || card.rarity === "mythic") && card.color_identity.length === 0
         }/>
-      </div>
-      <div className="rarityRow">
+      </RarityRow>
+      <RarityRow>
         <div style={{width: "75px"}}>
           Unco
         </div>
@@ -61,8 +67,8 @@ function DraftDisplay() {
         <DraftColumn title="None" cards={draftCards} filter={(card: Card) =>
           card.rarity === "uncommon" && card.color_identity.length === 0
         }/>
-      </div>
-      <div className="rarityRow">
+      </RarityRow>
+      <RarityRow>
         <div style={{width: "75px"}}>
           Common
         </div>
@@ -87,7 +93,7 @@ function DraftDisplay() {
         <DraftColumn title="None" cards={draftCards} filter={(card: Card) =>
           card.rarity === "common" && card.color_identity.length === 0
         }/>
-      </div>
+      </RarityRow>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { BoosterType } from '../Domain/PackConstruction';
 function BoosterTypes() {
   const {setBoosterType} = useContext(SearchContext);
   const boosterTypes: BoosterType[] = [
-    "draft", "set", "play", "collector"
+    "draft", "set", "play", "collector", "playTarkir"
   ]
 
   return (

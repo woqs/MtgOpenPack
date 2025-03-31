@@ -10,8 +10,12 @@ function BoosterValue() {
   useEffect(() => {
     let sum: number = 0;
     boosterCards.forEach((card: Card) => {
-      sum += Number.isNaN(Number.parseFloat(card.prices[currency])) ?
-        Number.parseFloat(card.prices.usd_foil) ?? 0 :
+      sum += Number.isNaN(Number.parseFloat(card.prices[currency]))
+        ?
+        Number.isNaN(Number.parseFloat(card.prices.usd_foil)) ?
+          0 :
+          Number.parseFloat(card.prices.usd_foil)
+        :
         Number.parseFloat(card.prices[currency]) ?? 0
       ;
     });

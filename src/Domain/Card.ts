@@ -10,7 +10,7 @@ export type Currency =
 
 export type Card = {
   id: string;
-  type_line: string;
+  type_line?: string;
   card_faces?: ImageUris[]
   border_color: Border;
   rarity: Rarity;

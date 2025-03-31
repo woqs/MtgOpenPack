@@ -3,7 +3,7 @@ import DraftDisplay from "../Application/DraftDisplay";
 import OpenDraft from "../Application/OpenDraft";
 import SetList from "../Application/SetList";
 
-function DraftPage() {
+function SealedPage() {
 
   return (
     <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", gap: "40px", paddingTop: "40px", width: "100%" }}>
@@ -21,4 +21,4 @@ function DraftPage() {
   );
 }
 
-export default DraftPage;
+export default SealedPage;

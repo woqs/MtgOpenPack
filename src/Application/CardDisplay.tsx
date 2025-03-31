@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Card, ImageUris } from '../Domain/Card';
-import "./CardDisplay.css"
+import { styled } from 'styled-components';
+
+const CardDiv = styled.div<{ $reduced?: boolean }>`
+  width: ${props => props.$reduced ? 200 : 256}px;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative;
+
+  &:hover {
+    transform: ${props => props.$reduced ? "scale3d(1.15, 1.15, 0.2)" : "scale3d(1.3, 1.3, 0.3)"};
+    z-index: 1;
+  }
+`
 
 const CardDisplay: React.FC<{card: Card, isReduced?: boolean}> = ({card, isReduced = false}) => {
   const [imgUri, setImgUri] = useState<string|undefined>();
@@ -14,8 +26,8 @@ const CardDisplay: React.FC<{card: Card, isReduced?: boolean}> = ({card, isReduc
   }, [card]);
 
   return (
-    <div className={isReduced ? "reducedCard" : "card"} >
-      <img alt="This is cool" src={imgUri} />
+    <CardDiv $reduced={isReduced}>
+      <img alt="This is cool" src={imgUri} style={{ borderRadius: "10px", maxWidth: "100%"}} />
       {cardFaces && cardFaces.length > 1 &&
         <div
           style={{position: "absolute", color: "white", top: "90%", left: "45%"}}
@@ -28,7 +40,7 @@ const CardDisplay: React.FC<{card: Card, isReduced?: boolean}> = ({card, isReduc
           Turn
         </div>
       }
-    </div>
+    </CardDiv>
   );
 }
 
