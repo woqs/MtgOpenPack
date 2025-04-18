@@ -4,11 +4,11 @@ import { Card } from '../Domain/Card';
 import CardDisplay from './CardDisplay';
 
 function CardsDisplay() {
-  const {boosterCards} = useContext(SearchContext);
+  const {draftCards} = useContext(SearchContext);
 
   return (
     <div style={{ width: "80%", height: "80%", display: "flex", justifyContent: 'space-around', flexWrap: "wrap", marginBottom: "10%"}}>
-      {boosterCards.map((card: Card) => <CardDisplay card={card} />)}
+      {draftCards.map((card: Card) => <CardDisplay card={card} />)}
     </div>
   );
 }

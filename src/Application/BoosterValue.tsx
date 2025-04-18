@@ -5,11 +5,11 @@ import { Card, Currency } from '../Domain/Card';
 function BoosterValue() {
   const [value, setValue] = useState<number>(0);
   const [currency, setCurrency] = useState<Currency>("eur");
-  const {boosterCards} = useContext(SearchContext);
+  const {draftCards} = useContext(SearchContext);
 
   useEffect(() => {
     let sum: number = 0;
-    boosterCards.forEach((card: Card) => {
+    draftCards.forEach((card: Card) => {
       sum += Number.isNaN(Number.parseFloat(card.prices[currency]))
         ?
         Number.isNaN(Number.parseFloat(card.prices.usd_foil)) ?
@@ -20,11 +20,11 @@ function BoosterValue() {
       ;
     });
     setValue(sum);
-  }, [boosterCards]);
+  }, [draftCards, currency]);
 
   return (
     <div>
-      Value: {value}
+      Value: {value.toFixed(2)}
       <select onChange={(element) => setCurrency(element.target.value as Currency)}>
         <option value="eur">€</option>
         <option value="usd">$</option>
