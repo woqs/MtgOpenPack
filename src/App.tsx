@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import OpenAPackPage from './Pages/OpenAPackPage';
 import SealedPage from './Pages/SealedPage';
 import BoosterBoxPage from './Pages/BoosterBoxPage';
 
 function App() {
-  const [pageDisplayed, setPageDisplayed] = useState<"pack"|"sealed"|"box">("pack")
+  const [pageDisplayed, setPageDisplayed] = useState<"pack"|"sealed"|"box">("pack");
+  useEffect(() => {
+    document.title = "Open Pack";
+  })
   return (
     <div>
       <div style={{display: "flex", width: "100%", justifyContent: 'space-around'}}>

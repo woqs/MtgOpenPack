@@ -5,7 +5,7 @@ import { Card, Currency } from '../Domain/Card';
 function BoosterValue() {
   const [value, setValue] = useState<number>(0);
   const [currency, setCurrency] = useState<Currency>("eur");
-  const {draftCards} = useContext(SearchContext);
+  const { draftCards } = useContext(SearchContext);
 
   useEffect(() => {
     let sum: number = 0;
